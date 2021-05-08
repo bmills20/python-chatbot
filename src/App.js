@@ -1,9 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
-import React, { useState } from 'react';
-import { Container } from 'react-bootstrap';
+import React, { useState, useRef, useEffect } from 'react';
+import { Container, Collapse } from 'react-bootstrap';
 
 function App() {
+  const [chatOpen, setChatOpen] = useState(true);
+  const chatbox =  useRef(null);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -19,11 +22,19 @@ function App() {
         >
           Learn React
         </a>
-        <Container className="chatbox-container">
-          <Container className="chatbox-top">
-            Chat
-          </Container>
-        </Container>
+        <Container className={chatOpen ? "chatbox-top" : "chatbox-top chatbox-top-collapsed"} 
+          onClick={() => {console.log(chatOpen); setChatOpen(!chatOpen)}}
+          aria-controls={chatbox}
+          aria-expanded={chatOpen}
+        >
+              Chat
+            </Container>
+          <div ref={chatbox} className={chatOpen ? "chatbox-container" : "chatbox-container hidden"}>
+            Testing testing
+            <div className="input-container">
+              <input className="user-input"></input>
+            </div>
+          </div>
       </header>
     </div>
   );
