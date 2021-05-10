@@ -1,7 +1,8 @@
 import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import React, { useState, useRef, useEffect } from 'react';
-import { Container, Collapse } from 'react-bootstrap';
+import { Container, InputGroup, FormControl } from 'react-bootstrap';
 
 function App() {
   const [chatOpen, setChatOpen] = useState(true);
@@ -32,7 +33,17 @@ function App() {
           <div ref={chatbox} className={chatOpen ? "chatbox-container" : "chatbox-container hidden"}>
             Testing testing
             <div className="input-container">
-              <input className="user-input"></input>
+              <InputGroup className="input-container">
+                <FormControl
+                  placeholder="Enter text here"
+                  aria-label="usertext-label"
+                  aria-describedby="sendbtn"
+                />
+                <InputGroup.Append>
+                  <InputGroup.Text id="sendbtn">Send</InputGroup.Text>
+                </InputGroup.Append>
+              </InputGroup>
+              
             </div>
           </div>
       </header>
