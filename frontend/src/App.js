@@ -87,12 +87,13 @@ function App() {
               Chat
             </Container>
           <div ref={chatbox} className={chatOpen ? "chatbox-container" : "chatbox-container hidden"}>
-          {chatList.map((msg) => (
-            <p>
-              User:&nbsp;
-              {msg}
-            </p>
-          ))}
+            <ul>
+              {chatList.map((msg) => (
+                <p>
+                  {msg}
+                </p>
+              ))}
+            </ul>
             <div className="input-container">
               <InputGroup className="input-container">
                 <FormControl

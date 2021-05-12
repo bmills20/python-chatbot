@@ -63,6 +63,23 @@ code {
   transition: height 0.5s;
 }
 
+.chatbox-container p {
+  font-size: smaller;
+  margin-right: 1rem;
+  text-align: right;
+}
+
+.chatbox-container p:first-of-type {
+  margin-top: 1rem;
+}
+
+.chatbox-container p::before {
+  color: blue;
+  content: "User: ";
+}
+
+
+
 .hidden {
   overflow: hidden;
   height: 0;
