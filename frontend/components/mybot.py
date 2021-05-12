@@ -1,21 +1,23 @@
 from chatterbot import ChatBot
 from chatterbot.trainers import ListTrainer, ChatterBotCorpusTrainer
 
-bot = ChatBot (
-    'Timmy',
+bot2 = ChatBot (
+    'John',
     storage_adapter='chatterbot.storage.SQLStorageAdapter',
-    database_uri='sqlite:///database.sqlite3',
+    database_uri='sqlite:///database.sqlite3_2',
     logic_adapters=[
         'chatterbot.logic.BestMatch',
-        'chatterbot.logic.TimeLogicAdapter']
+        'chatterbot.logic.MathematicalEvaluation']
 )
 
 
 
-""" trainer = ListTrainer(bot)
+trainer = ListTrainer(bot2)
 
-trainer2 = ChatterBotCorpusTrainer(bot)
+trainer2 = ChatterBotCorpusTrainer(bot2)
 
+# Training via list data
+# Each line is an answer to the previous
 trainer.train([
     'Hello',
     'Hi',
@@ -38,15 +40,18 @@ trainer.train([
     'No go away.'
 ])
 
+
+# Corpus of quick examples to help the AI learn
+# Using the entire english corpus of ChatterBot
 trainer2.train(
     "chatterbot.corpus.english"
-) """
+)
 
 while True:
     try:
         user_input = input()
 
-        bot_response = bot.get_response(user_input)
+        bot_response = bot2.get_response(user_input)
 
         print(bot_response)
 
